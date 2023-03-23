@@ -1,0 +1,115 @@
+<div class="addroom">
+    <div class="container">
+      <br>
+      <h1 class="text-center">Add room</h1>
+      <br>
+        <form (ngSubmit)="onAddVariable()" #AddVariableForm="ngForm">
+          <div class="row">
+            <div class="col-6">
+              <label for="month">Select Month:label> 
+              <select #month name="month" class="form-control" id="month" (change)="changeMonth(month.value)" >
+                <option>Select month</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+              <label for="house">Select House:</label> 
+              <select #houses class="form-control" (change)="selectHouse(houses.value)">  
+                <option>Select house name</option>   
+                <option *ngFor="let houseName of houseNames" value={{houseName.name}}>{{houseName.name}}</option>  
+              </select>  
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="heat">Heat:</label>
+                <input type="text" class="form-control" placeholder="heat" id="heat" required [(ngModel)]="variable.heat" name="heat" #heat="ngModel">
+                <div *ngIf="heat.invalid && (heat.dirty || heat.touched)" class="alert alert-danger">
+                  <div *ngIf="heat.errors.required">Heat is required.</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="hydro">Hydro:</label>
+                <input type="text" class="form-control" placeholder="hydro" id="hydro" required [(ngModel)]="variable.hydro" name="hydro" #hydro="ngModel">
+                <div *ngIf="hydro.invalid && (hydro.dirty || hydro.touched)" class="alert alert-danger">
+                  <div *ngIf="hydro.errors.required">Hydro is required.</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="water">Water:</label>
+                <input type="text" class="form-control" placeholder="water" id="water" required [(ngModel)]="variable.water" name="water" #water="ngModel">
+                <div *ngIf="water.invalid && (water.dirty || water.touched)" class="alert alert-danger">
+                  <div *ngIf="water.errors.required">Water is required.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" [disabled]="!AddVariableForm.form.valid">Submit</button>
+        </form>
+    </div>
+</div><div class="addvariale">
+  <div class="container">
+    <br>
+    <h1 class="text-center">Add room</h1>
+    <br>
+      <form (ngSubmit)="onAddVariable()" #AddVariableForm="ngForm">
+        <div class="row">
+          <div class="col-6">
+            <label for="month">Select Month:label> 
+            <select #month name="month" class="form-control" id="month" (change)="changeMonth(month.value)" >
+              <option>Select month</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+            <label for="house">Select House:</label> 
+            <select #houses class="form-control" (change)="selectHouse(houses.value)">  
+              <option>Select house name</option>   
+              <option *ngFor="let houseName of houseNames" value={{houseName.name}}>{{houseName.name}}</option>  
+            </select>  
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label for="heat">Heat:</label>
+              <input type="text" class="form-control" placeholder="heat" id="heat" required [(ngModel)]="variable.heat" name="heat" #heat="ngModel">
+              <div *ngIf="heat.invalid && (heat.dirty || heat.touched)" class="alert alert-danger">
+                <div *ngIf="heat.errors.required">Heat is required.</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="hydro">Hydro:</label>
+              <input type="text" class="form-control" placeholder="hydro" id="hydro" required [(ngModel)]="variable.hydro" name="hydro" #hydro="ngModel">
+              <div *ngIf="hydro.invalid && (hydro.dirty || hydro.touched)" class="alert alert-danger">
+                <div *ngIf="hydro.errors.required">Hydro is required.</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="water">Water:</label>
+              <input type="text" class="form-control" placeholder="water" id="water" required [(ngModel)]="variable.water" name="water" #water="ngModel">
+              <div *ngIf="water.invalid && (water.dirty || water.touched)" class="alert alert-danger">
+                <div *ngIf="water.errors.required">Water is required.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" [disabled]="!AddVariableForm.form.valid">Submit</button>
+      </form>
+  </div>
+</div>

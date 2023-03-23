@@ -1,0 +1,59 @@
+<div class="container text-center p-3 my-3">
+    <div class="row">
+        <div class="col">
+            <h2 class="page-header">Dashboard</h2>
+            <p>Wellcome to your dashboard</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <h4>View Room Rent Cost</h4>
+            <select #house class="form-control" (change)="selectHouse(house.value)">
+                <option value="">Select house:</option>
+                <option *ngFor="let houseName of houseNames" value={{houseName.name}}>{{houseName.name}}</option>
+            </select>
+            <br>
+            <select #room class="form-control" (change)="selectRoom(room.value)">
+                <option value="">Select Room:</option>
+                <option *ngFor="let roomName of roomNames" value={{roomName.name}}>{{roomName.name}}</option>
+            </select>
+            <br>
+            <select #month class="form-control" (change)="selectMonth(month.value)">
+                <option>Select Month:</option>
+                <option *ngFor="let month of months" value={{month.month}}>{{month.month}}</option>
+            </select>
+            <div class="text-left pt-2">
+                <h5>Base rent: {{houseData[0].baseRent}}</h5>
+                <h5>Internet:{{houseData[0].internet}}</h5>
+                <h5>Insurance: {{houseData[0].insurance}}</h5>
+                <h5>Share percentage: {{roomData[0].share}}</h5>
+                <h5>Heat:{{monthData[0].heat}}</h5>
+                <h5>Hydro:{{monthData[0].hydro}}</h5>
+                <h5>Water:{{monthData[0].water}}</h5>
+                <br>
+                <h4>Total:{{totalRent}}</h4>
+                <h4>This room:{{selectedRoomRent}}</h4>
+            </div>
+        </div>
+        <div class="col-6">
+            <h4>Set room</h4>
+            <select #users class="form-control" (change)="selectResident(users.value)">
+                <option value="">Select resident e-mail</option>
+                <option *ngFor="let resident of residents" value={{resident.email}}>{{resident  .email}}</option>
+            </select>
+            <br>
+            <button class="btn btn-info btn-block" (click)="onResidentSetting()">SET RESIDENT</button>
+            <br>
+            <div *ngIf="selectedResident != ''">
+                <h4>View Resident State: </h4>
+                <div class="custom-control custom-switch pt-4">
+                    <input type="checkbox" class="custom-control-input " id="activeStatus" 
+                    name="activeStatus" [(ngModel)]="selected">
+                    <label class="custom-control-label" for="activeStatus">{{selected?'Paid':'Pending'}}</label>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary btn-block" [disabled]="!selected" (click)="sendEmail(selectedResident)">Send Email</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+version: '3.0' # specify docker-compose version
+ 
+# Define the services/ containers to be run
+services:
+ angular: # name of the first service
+  build: ./angular-client # specify the directory of the Dockerfile
+  ports:
+  - "4200:4200" # specify port mapping
+ 
+ express: # name of the second service
+  build: ./express-server # specify the directory of the Dockerfile
+  ports:
+  - "3000:3000" #specify ports mapping
+  environment: 
+  - MONGO_URL=mongodb://database/meanauth # MongoDB server address as environment variable give to backend
+  links:
+  - database # link this service to the database service
+  depends_on: 
+  - database # define dependency
+ 
+ database: # name of the third service
+  image: mongo # specify image to build container from
+  ports:
+  - "27017:27017" # specify port forwarding
+
+# docker-compose up --build

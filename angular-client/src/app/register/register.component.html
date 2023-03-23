@@ -1,0 +1,52 @@
+<div class="container p-3 my-3">
+    <div class="row">
+        <div class="col">
+            <h2 class="text-center">Welcome to register</h2>
+            <form (ngSubmit)="onRegisterSubmit(); registerForm.reset();" #registerForm="ngForm">
+                <div class="form-group">
+                  <label for="name">Name:</label>
+                  <input type="text" class="form-control" placeholder="Enter your name" id="name" required minlength="8" [(ngModel)]="model.name" name="name" #name="ngModel">
+                  <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+                    <div *ngIf="name.errors.required">Name is required.</div>
+                    <div *ngIf="name.errors.minlength">Name must be at least 8 characters long.</div>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="email">Email:</label>
+                  <input type="email" class="form-control" placeholder="Enter your email address" id="email" required email [(ngModel)]="model.email" name="email" #email="ngModel">
+                  <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                    <div *ngIf="email.errors.required">Email address is required.</div>
+                    <div *ngIf="email.errors.email">It is not a valid email address format.</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone number:</label>
+                  <input type="text" class="form-control" placeholder="Enter your number" id="phone" required minlength="8" [(ngModel)]="model.phone" name="phone" #phone="ngModel">
+                  <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert alert-danger">
+                    <div *ngIf="phone.errors.required">Phone number is required.</div>
+                    <div *ngIf="phone.errors.minlength">Phone number must be at least 8 characters long.</div>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" placeholder="Enter your password" id="password" required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" [(ngModel)]="model.password" name="password" #password="ngModel">
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                      <div *ngIf="password.errors.required">Password is required.</div>
+                      <div *ngIf="password.errors.pattern">Password shall contain an uppercase, a lowercase and one numerical or special characters. Length must be minimum 8 characters.</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label for="emergencyContact">Emergency contact number:</label>
+                  <input type="text" class="form-control" placeholder="Enter contact phone number" id="emergencyContact" required minlength="8" [(ngModel)]="model.emergencyContact" name="emergencyContact" #emergencyContact="ngModel">
+                  <div *ngIf="emergencyContact.invalid && (emergencyContact.dirty || emergencyContact.touched)" class="alert alert-danger">
+                    <div *ngIf="emergencyContact.errors.required">Phone Number is required.</div>
+                    <div *ngIf="emergencyContact.errors.minlength">Phone Number must be at least 8 characters long.</div>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" [disabled]="!registerForm.form.valid">Submit</button>
+              </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="house">
+    <div class="container">
+        <h1 class="text-center">House Manage</h1>
+            <div class="row">
+                <div class="col-6 pr-4">
+                    <form (ngSubmit)="onHouseSubmit()" #houseForm="ngForm">
+                    <div class="form-group">
+                        <label for="name">House name:</label>
+                        <input type="text" class="form-control" placeholder="Enter house name" id="name" required [(ngModel)]="houseData.name" name="name" #name="ngModel">
+                        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+                          <div *ngIf="name.errors.required">Name is required.</div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="address">House address:</label>
+                          <input type="text" class="form-control" placeholder="Enter house address" id="address" required [(ngModel)]="houseData.address" name="address" #address="ngModel">
+                          <div *ngIf="address.invalid && (address.dirty || address.touched)" class="alert alert-danger">
+                            <div *ngIf="address.errors.required">Address is required.</div>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="baseRent">House base rent:</label>
+                          <input type="text" class="form-control" placeholder="Enter house base rent" id="baseRent" required [(ngModel)]="houseData.baseRent" name="baseRent" #baseRent="ngModel">
+                          <div *ngIf="baseRent.invalid && (baseRent.dirty || baseRent.touched)" class="alert alert-danger">
+                            <div *ngIf="baseRent.errors.required">Base rent is required.</div>
+                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <input type="text" class="form-control" placeholder="Internet(optional)" id="internet" required [(ngModel)]="houseData.internet" name="internet" #internet="ngModel">
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control" placeholder="Insurance(optional)" id="insurance" required [(ngModel)]="houseData.insurance" name="insurance" #insurance="ngModel">
+                        </div>
+                      </div>  
+                      <br>
+                      <button class="btn btn-dark btn-block" [routerLink]="['/add-variable']">Add Variable</button>
+                      <button type="submit" class="btn btn-primary btn-block" [disabled]="!houseForm.form.valid">Submit</button>
+                    </form>
+                </div>
+                <div class="col-6 pl-4">
+                    <br>
+                    <h3 class="text-center">Add room to house</h3>
+                    <br>
+                    <form (ngSubmit)="onAddRoomSubmit()" #AddRoomForm="ngForm">
+                        <div>
+                          <label for="houses">Select house name.</label>
+                          <select #houses class="form-control" (change)="selectHouse(houses.value)">  
+                            <option>Select house name</option>   
+                            <option *ngFor="let houseName of houseNames" value={{houseName.name}}>{{houseName.name}}</option>  
+                          </select>  
+                        </div>
+                        <div class="form-group">
+                          <label for="name">Room name:</label>
+                          <input type="text" class="form-control" placeholder="Enter room name" id="name" required [(ngModel)]="roomData.name" name="name" #name="ngModel">
+                          <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+                            <div *ngIf="name.errors.required">Name is required.</div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="sharePercentage">Share Percentage:</label>
+                            <input type="text" class="form-control" placeholder="Enter house share percentage" id="address" required [(ngModel)]="roomData.sharePercentage" name="sharePercentage" #sharePercentage="ngModel">
+                            <div *ngIf="sharePercentage.invalid && (sharePercentage.dirty || sharePercentage.touched)" class="alert alert-danger">
+                              <div *ngIf="sharePercentage.errors.required">Share percentage is required.</div>
+                            </div>
+                        </div>
+                      
+                        <br>
+                        <button type="submit" class="btn btn-primary btn-block mt-2" [disabled]="!AddRoomForm.form.valid">Submit</button>
+                        <br>
+                    </form>
+                </div>
+            </div>
+          <br>
+    </div>
+</div>

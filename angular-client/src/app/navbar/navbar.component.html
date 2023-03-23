@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="/">Rentual</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsMeanAuthApp" aria-controls="navbarsMeanAuthApp" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsMeanAuthApp">
+    <ul class="navbar-nav ml-auto">
+      <li *ngIf="authService.loggedIn()" class="nav-item">
+        <a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a>
+      </li>
+      <li *ngIf="authService.loggedIn()" class="nav-item">
+        <a class="nav-link" [routerLink]="['/residents']">Residents</a>
+      </li>
+      <li *ngIf="authService.loggedIn()" class="nav-item">
+        <a class="nav-link" [routerLink]="['/house']">House</a>
+      </li>
+      <li *ngIf="authService.loggedIn()" class="nav-item">
+        <a class="nav-link" [routerLink]="['/profile']">Profile</a>
+      </li>
+      <li *ngIf="!authService.loggedIn()" class="nav-item">
+        <a class="nav-link" [routerLink]="['/login']">Login</a>
+      </li>
+      <li *ngIf="!authService.loggedIn()" class="nav-item">
+        <a class="nav-link" [routerLink]="['/register']">Register</a>
+      </li>
+      <li *ngIf="authService.loggedIn()" class="nav-item">
+        <a class="nav-link" (click)="onLogoutClick()" href="#">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
